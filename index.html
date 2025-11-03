@@ -267,14 +267,21 @@
             background-color: var(--primary-color);
         }
 
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
         .skill-item {
-            margin-bottom: 25px;
-            position: relative;
-            padding: 15px;
             background: white;
             border-radius: 12px;
+            padding: 20px;
+            text-align: center;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
+            position: relative;
             overflow: hidden;
         }
 
@@ -283,10 +290,11 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 5px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
-            transition: width 0.3s ease;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
 
         .skill-item:hover {
@@ -295,98 +303,29 @@
         }
 
         .skill-item:hover::before {
-            width: 8px;
-        }
-
-        .skill-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-
-        .skill-name {
-            display: flex;
-            align-items: center;
-            font-weight: 600;
-            color: var(--secondary-color);
+            transform: scaleX(1);
         }
 
         .skill-icon {
-            width: 30px;
-            height: 30px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 12px;
-            color: white;
-            font-size: 0.9rem;
-        }
-
-        .skill-percentage {
-            font-weight: 700;
+            font-size: 2.5rem;
             color: var(--primary-color);
-            font-size: 1.1rem;
+            transition: all 0.3s ease;
         }
 
-        .skill-bar-container {
-            position: relative;
-            height: 12px;
-            background-color: #f0f0f0;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        .skill-item:hover .skill-icon {
+            transform: scale(1.1);
         }
 
-        .skill-bar {
-            height: 100%;
-            border-radius: 10px;
-            position: relative;
-            transition: width 1.5s cubic-bezier(0.22, 0.61, 0.36, 1);
-            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-            box-shadow: 0 2px 5px rgba(52, 152, 219, 0.3);
-        }
-
-        .skill-bar::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            background-image: linear-gradient(
-                -45deg,
-                rgba(255, 255, 255, 0.2) 25%,
-                transparent 25%,
-                transparent 50%,
-                rgba(255, 255, 255, 0.2) 50%,
-                rgba(255, 255, 255, 0.2) 75%,
-                transparent 75%,
-                transparent
-            );
-            background-size: 15px 15px;
-            animation: move 1.5s linear infinite;
-            border-radius: 10px;
-        }
-
-        @keyframes move {
-            0% {
-                background-position: 0 0;
-            }
-            100% {
-                background-position: 15px 15px;
-            }
-        }
-
-        .skill-level {
-            position: absolute;
-            right: 0;
-            top: -25px;
-            font-size: 0.8rem;
-            color: #777;
+        .skill-name {
             font-weight: 600;
+            color: var(--secondary-color);
+            font-size: 0.95rem;
         }
 
         /* Education Section Styles */
@@ -875,6 +814,11 @@
             .internship-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .skills-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                gap: 15px;
+            }
         }
     </style>
 </head>
@@ -915,7 +859,6 @@
                 </div>
                 <div class="hero-image">
                     <img src="profile.jpg.png" alt="My Profile Picture">
-
                 </div>
             </div>
         </div>
@@ -932,85 +875,54 @@
                 <div class="about-text">
                     <h3>Who am I?</h3>
                     <p>I'm a passionate web developer with experience in building modern, responsive websites using HTML, CSS, and React. I also have an intermediate understanding of Python and foundational knowledge of Java and C, which allow me to approach problems with a versatile mindset.</p>
-                    <p>While I'm continuously expanding my expertise, I enjoy working on projects that blend creativity and logic. My journey into development began when I discovered how code can bring ideas to life, and I’ve been hooked ever since. Whether designing clean, user-friendly web interfaces or tackling algorithmic challenges, I thrive on learning and building.</p>
+                    <p>While I'm continuously expanding my expertise, I enjoy working on projects that blend creativity and logic. My journey into development began when I discovered how code can bring ideas to life, and I've been hooked ever since. Whether designing clean, user-friendly web interfaces or tackling algorithmic challenges, I thrive on learning and building.</p>
                     <p>Outside of coding, I enjoy hiking, reading sci-fi novels, and experimenting with new recipes in the kitchen.</p>
                     
                     <div class="skills">
                         <h3>My Skills</h3>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <div class="skill-name">
-                                    <div class="skill-icon">
-                                        <i class="fab fa-html5"></i>
-                                    </div>
-                                    <span>HTML/CSS</span>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <i class="fab fa-html5"></i>
                                 </div>
-                                <div class="skill-percentage">95%</div>
+                                <div class="skill-name">HTML/CSS</div>
                             </div>
-                            <div class="skill-bar-container">
-                                <div class="skill-bar" style="width: 95%;"></div>
-                            </div>
-                            <div class="skill-level">Expert</div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <div class="skill-name">
-                                    <div class="skill-icon">
-                                        <i class="fab fa-python"></i>
-                                    </div>
-                                    <span>Python</span>
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <i class="fab fa-python"></i>
                                 </div>
-                                <div class="skill-percentage">60%</div>
+                                <div class="skill-name">Python</div>
                             </div>
-                            <div class="skill-bar-container">
-                                <div class="skill-bar" style="width: 60%;"></div>
-                            </div>
-                            <div class="skill-level">Intermediate</div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <div class="skill-name">
-                                    <div class="skill-icon">
-                                        <i class="fab fa-java"></i>
-                                    </div>
-                                    <span>Java Programming</span>
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <i class="fab fa-java"></i>
                                 </div>
-                                <div class="skill-percentage">50%</div>
+                                <div class="skill-name">Java</div>
                             </div>
-                            <div class="skill-bar-container">
-                                <div class="skill-bar" style="width: 50%;"></div>
-                            </div>
-                            <div class="skill-level">Intermediate</div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <div class="skill-name">
-                                    <div class="skill-icon">
-                                        <i class="fas fa-database"></i>
-                                    </div>
-                                    <span>MongoDB</span>
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <i class="fas fa-database"></i>
                                 </div>
-                                <div class="skill-percentage">70%</div>
+                                <div class="skill-name">MongoDB</div>
                             </div>
-                            <div class="skill-bar-container">
-                                <div class="skill-bar" style="width: 70%;"></div>
-                            </div>
-                            <div class="skill-level">Beginner</div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-header">
-                                <div class="skill-name">
-                                    <div class="skill-icon">
-                                        <i class="fas fa-database"></i>
-                                    </div>
-                                    <span>SQL</span>
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <i class="fas fa-database"></i>
                                 </div>
-                                <div class="skill-percentage">60%</div>
+                                <div class="skill-name">SQL</div>
                             </div>
-                            <div class="skill-bar-container">
-                                <div class="skill-bar" style="width: 60%;"></div>
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <i class="fab fa-js"></i>
+                                </div>
+                                <div class="skill-name">JavaScript</div>
                             </div>
-                            <div class="skill-level">Intermediate</div>
+                            <div class="skill-item">
+                                <div class="skill-icon">
+                                    <i class="fab fa-git-alt"></i>
+                                </div>
+                                <div class="skill-name">Git</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1114,6 +1026,7 @@ University in Krishnankoil, Tamil Nadu</span>
                             Completed secondary education with good academic performance, 
                             showing dedication and a strong foundation in learning, 
                             and consistently maintaining focus and discipline throughout the studies.
+                        </p>
                         <div class="education-highlights">
                             <h4 class="highlight-title">Key Activities:</h4>
                             <ul class="highlight-list">
@@ -1124,14 +1037,13 @@ University in Krishnankoil, Tamil Nadu</span>
                             </ul>
                         </div>
                         <div class="education-stats">
-                                <div class="stat">
+                            <div class="stat">
                                 <div class="stat-value">9.0</div>
                                 <div class="stat-label">GPA Score</div>
                             </div>
                             <div class="stat">
                                 <div class="stat-value">83.5%</div>
                                 <div class="stat-label">Final Score</div>
-                            </div>
                             </div>
                         </div>
                     </div>
@@ -1258,7 +1170,7 @@ University in Krishnankoil, Tamil Nadu</span>
                         </div>
                         <div class="form-group">
                             <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" required>
+                            <input type="text" id="subject" name="subject">
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
@@ -1275,7 +1187,7 @@ University in Krishnankoil, Tamil Nadu</span>
     <footer>
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2023 Ankamma Gari Sanjeev Charan. All rights reserved.</p>
+                <p>&copy; 2025 Ankamma Gari Sanjeev Charan. All Rights Reserved.</p>
                 <div class="footer-social">
                     <a href="https://github.com/SanjeevCharan-123"><i class="fab fa-github"></i></a>
                     <a href="https://www.linkedin.com/in/ankamma-gari-sanjeev-charan-633668268/"><i class="fab fa-linkedin"></i></a>
@@ -1286,69 +1198,19 @@ University in Krishnankoil, Tamil Nadu</span>
     </footer>
 
     <script>
-        // Mobile Navigation
+        // Mobile Navigation Toggle
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
-
+        
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
         });
-
+        
         // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
             });
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Form submission
-        const contactForm = document.querySelector('.contact-form form');
-        if(contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Get form data
-                const formData = new FormData(this);
-                const name = formData.get('name');
-                const email = formData.get('email');
-                const subject = formData.get('subject');
-                const message = formData.get('message');
-                
-                // Here you would typically send the form data to a server
-                // For now, we'll just show an alert
-                alert(`Thank you for your message, ${name}! I'll get back to you soon.`);
-                this.reset();
-            });
-        }
-
-        // Add scroll effect to header
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if(window.scrollY > 100) {
-                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-            } else {
-                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-                header.style.background = 'white';
-            }
         });
     </script>
 </body>
